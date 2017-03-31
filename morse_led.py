@@ -8,8 +8,8 @@ from time import sleep
 
 gpio_led = 11
 #Set to .2 for my bad morse skills. 
-morse_dot = float(.02)
-#morse_dot = float(.2)
+#morse_dot = float(.02)
+morse_dot = float(.2)
 morse_dash = morse_dot * 3
 morse_pause_elements = morse_dot
 morse_pause_char = morse_dot * 3
