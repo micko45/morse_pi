@@ -75,19 +75,27 @@ def word_2_elements(word):
      else:   
        blink_morse(CODE[c.upper()])
 
+#Get ip address of host and blink it out. 
 def blink_ip():
   myip = gethostbyname(gethostname())
   if '127.0' in myip:
     print "ohoh, Looks like /etc/hosts has a localhost/hostname entry, %r" %  myip
     exit()
-  #myip = socket.gethostbyname(socket.gethostname())
   if DEBUG == "true":
     print myip
   word_2_elements(myip)
 
-#If no args are provided just run printing out 0
+#Get ip address of host and blink it out. 
+def blink_hostname():
+  myname = gethostname()
+  if DEBUG == "true":
+    print myname
+  print myname
+  word_2_elements(myname)
+
+
+#If no args are provided blink hostname. 
 if len(argv) > 1:
   word_2_elements(argv[1])
 else:
-   #word_2_elements("0")
-  blink_ip()
+  blink_hostname()
