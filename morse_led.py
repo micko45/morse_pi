@@ -1,13 +1,15 @@
 #!/usr/bin/env python 
 
+from socket import gethostbyname,gethostname
 from random import randint
 from sys import argv
 import RPi.GPIO as GPIO 
 from time import sleep
 
 gpio_led = 11
-#morse_dot = float(.02)
-morse_dot = float(.2)
+#Set to .2 for my bad morse skills. 
+morse_dot = float(.02)
+#morse_dot = float(.2)
 morse_dash = morse_dot * 3
 morse_pause_elements = morse_dot
 morse_pause_char = morse_dot * 3
@@ -73,7 +75,19 @@ def word_2_elements(word):
      else:   
        blink_morse(CODE[c.upper()])
 
+def blink_ip():
+  myip = gethostbyname(gethostname())
+  if '127.0' in myip:
+    print "ohoh, Looks like /etc/hosts has a localhost/hostname entry, %r" %  myip
+    exit()
+  #myip = socket.gethostbyname(socket.gethostname())
+  if DEBUG == "true":
+    print myip
+  word_2_elements(myip)
+
+#If no args are provided just run printing out 0
 if len(argv) > 1:
   word_2_elements(argv[1])
 else:
-   word_2_elements("0")
+   #word_2_elements("0")
+  blink_ip()
