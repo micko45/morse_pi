@@ -6,7 +6,7 @@ from sys import argv
 import RPi.GPIO as GPIO 
 from time import sleep
 
-gpio_led = 11
+gpio_led = 7 
 #Set to .2 for my bad morse skills. 
 #morse_dot = float(.02)
 morse_dot = float(.2)
